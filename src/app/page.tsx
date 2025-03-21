@@ -11,6 +11,7 @@ import TeachersSection from '@/components/TeachersSection';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 import ApiStatus from '@/components/ApiStatus';
+import BrandPopup from '@/components/BrandPopup';
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
@@ -18,6 +19,9 @@ export default function Home() {
   return (
     <main className="min-h-screen">
       <Header setActiveSection={setActiveSection} activeSection={activeSection} />
+      
+      {/* Brand Popup */}
+      <BrandPopup />
       
       {activeSection === 'home' && (
         <>

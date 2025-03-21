@@ -22,12 +22,62 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
   ];
 
   return (
-    <header className="bg-dark text-white sticky top-0 z-50">
+    <header className="bg-gray-500 text-white sticky top-0 z-50">
       <div className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <div className="flex items-center">
-            <h1 className="text-2xl font-bold">ProCo</h1>
-            <p className="ml-2 text-sm hidden md:block">Professional Computer Institute</p>
+            {/* Tech-themed SVG Logo */}
+            <div className="flex items-center">
+              <svg 
+                width="48" 
+                height="48" 
+                viewBox="0 0 48 48" 
+                className="mr-3"
+              >
+                {/* Background hexagon - representing a code block */}
+                <polygon 
+                  points="24,4 44,14 44,34 24,44 4,34 4,14" 
+                  fill="#4F46E5" 
+                  stroke="#ffffff" 
+                  strokeWidth="1.5"
+                />
+                
+                {/* Code brackets */}
+                <path 
+                  d="M16,16 L12,24 L16,32" 
+                  stroke="white" 
+                  strokeWidth="2.5" 
+                  fill="none" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                />
+                <path 
+                  d="M32,16 L36,24 L32,32" 
+                  stroke="white" 
+                  strokeWidth="2.5" 
+                  fill="none" 
+                  strokeLinecap="round" 
+                  strokeLinejoin="round"
+                />
+                
+                {/* Slash for coding */}
+                <path 
+                  d="M28,14 L20,34" 
+                  stroke="white" 
+                  strokeWidth="2.5" 
+                  fill="none" 
+                  strokeLinecap="round"
+                />
+              </svg>
+              
+              {/* Updated font style for the text logo */}
+              <div className="font-inter tracking-tighter">
+                <span className="text-3xl border border-white font-extrabold">
+                  <span className="text-primary bg-white px-1 ">PRO</span>
+                  <span className="text-white mx-1">CO</span>
+                </span>
+              </div>
+            </div>
           </div>
 
           {/* Desktop Navigation */}
@@ -78,4 +128,4 @@ export default function Header({ activeSection, setActiveSection }: HeaderProps)
       </div>
     </header>
   );
-} 
+}
