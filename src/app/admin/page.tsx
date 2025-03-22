@@ -7,6 +7,7 @@ import AdminHeader from '@/components/admin/AdminHeader';
 import InquiriesTable from '@/components/admin/InquiriesTable';
 import CoursesTable from '@/components/admin/CoursesTable';
 import ApiStatus from '@/components/ApiStatus';
+import PortfolioAdmin from './_components/Admin-Portfolio';
 
 interface Inquiry {
   _id: string;
@@ -28,8 +29,14 @@ interface Course {
   features: string[];
 }
 
+const navItems = [
+  { id: 'inquiries', label: 'Inquiries' },
+  { id: 'courses', label: 'Courses' },
+  { id: 'portfolio', label: 'Portfolio' }, // Portfolio tab
+];
+
 export default function AdminDashboard() {
-  const [activeTab, setActiveTab] = useState<'inquiries' | 'courses'>('inquiries');
+  const [activeTab, setActiveTab] = useState<'inquiries' | 'courses' | 'portfolio'>('inquiries');
   const [inquiries, setInquiries] = useState<Inquiry[]>([]);
   const [courses, setCourses] = useState<Course[]>([]);
   const [isLoading, setIsLoading] = useState(true);
@@ -388,10 +395,12 @@ export default function AdminDashboard() {
               )}
             </>
           )}
+
+          {activeTab === 'portfolio' && <PortfolioAdmin />}
         </div>
       </main>
       
       <ApiStatus />
     </div>
   );
-} 
+}

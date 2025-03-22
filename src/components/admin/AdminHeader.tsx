@@ -3,8 +3,8 @@
 import NotificationCenter from './NotificationCenter';
 
 interface AdminHeaderProps {
-  activeTab: 'inquiries' | 'courses';
-  setActiveTab: (tab: 'inquiries' | 'courses') => void;
+  activeTab: 'inquiries' | 'courses' | 'portfolio'; // Add 'portfolio' here
+  setActiveTab: (tab: 'inquiries' | 'courses' | 'portfolio') => void; // Add 'portfolio' here
   onLogout: () => void;
 }
 
@@ -31,6 +31,12 @@ export default function AdminHeader({ activeTab, setActiveTab, onLogout }: Admin
               >
                 Courses
               </button>
+              <button 
+                onClick={() => setActiveTab('portfolio')} // Add Portfolio button
+                className={`${activeTab === 'portfolio' ? 'text-primary font-medium' : 'text-white'} hover:text-primary transition-colors`}
+              >
+                Portfolio
+              </button>
             </nav>
             
             <div className="flex items-center space-x-4">
@@ -48,4 +54,4 @@ export default function AdminHeader({ activeTab, setActiveTab, onLogout }: Admin
       </div>
     </header>
   );
-} 
+}

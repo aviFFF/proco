@@ -12,6 +12,7 @@ import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
 import ApiStatus from '@/components/ApiStatus';
 import BrandPopup from '@/components/BrandPopup';
+import Portfolio from '@/components/Portfolio'; // Import Portfolio component
 
 export default function Home() {
   const [activeSection, setActiveSection] = useState('home');
@@ -41,6 +42,8 @@ export default function Home() {
           <MernSection />
         </>
       )}
+      
+      {activeSection === 'portfolio' && <Portfolio />} {/* Render Portfolio */}
       
       {activeSection === 'about' && (
         <>
