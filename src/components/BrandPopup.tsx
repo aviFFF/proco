@@ -48,7 +48,7 @@ const BrandPopup = () => {
               />
             </div>
             <h3 className="mt-3 sm:mt-4 text-lg sm:text-xl font-semibold text-center">Proco Software Solutions</h3>
-            <p className="text-center text-gray-600 mt-1 sm:mt-2 text-sm sm:text-base">Custom software development services</p>
+            <p className="text-center text-gray-600 mt-1 sm:mt-2 text-sm sm:text-base">Get Your Business Online</p>
           </div>
           
           <div className="flex-1 flex flex-col items-center w-full mt-4 md:mt-0">
@@ -62,7 +62,7 @@ const BrandPopup = () => {
               />
             </div>
             <h3 className="mt-3 sm:mt-4 text-lg sm:text-xl font-semibold text-center">Proco Learning Solutions</h3>
-            <p className="text-center text-gray-600 mt-1 sm:mt-2 text-sm sm:text-base">Professional tech education and training</p>
+            <p className="text-center text-gray-600 mt-1 sm:mt-2 text-sm sm:text-base">Learn Creating Web/Mobile Application</p>
           </div>
         </div>
         
