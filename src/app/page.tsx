@@ -7,10 +7,9 @@ import JavaScriptSection from '@/components/JavaScriptSection';
 import AndroidSection from '@/components/AndroidSection';
 import MernSection from '@/components/MernSection';
 import AchievementsSection from '@/components/AchievementsSection';
-import TeachersSection from '@/components/TeachersSection';
+// import TeachersSection from '@/components/TeachersSection';
 import ContactForm from '@/components/ContactForm';
 import Footer from '@/components/Footer';
-import ApiStatus from '@/components/ApiStatus';
 import BrandPopup from '@/components/BrandPopup';
 import Portfolio from '@/components/Portfolio'; // Import Portfolio component
 
@@ -31,7 +30,7 @@ export default function Home() {
           <AndroidSection />
           <MernSection />
           <AchievementsSection />
-          <TeachersSection />
+          {/* <TeachersSection /> */}
         </>
       )}
       
@@ -48,14 +47,13 @@ export default function Home() {
       {activeSection === 'about' && (
         <>
           <AchievementsSection />
-          <TeachersSection />
+          {/* <TeachersSection /> */}
         </>
       )}
       
       {activeSection === 'contact' && <ContactForm />}
       
       <Footer />
-      <ApiStatus />
     </main>
   );
 }
