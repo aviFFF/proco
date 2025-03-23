@@ -6,7 +6,6 @@ import { useRouter } from 'next/navigation';
 import AdminHeader from '@/components/admin/AdminHeader';
 import InquiriesTable from '@/components/admin/InquiriesTable';
 import CoursesTable from '@/components/admin/CoursesTable';
-import ApiStatus from '@/components/ApiStatus';
 import PortfolioAdmin from './_components/Admin-Portfolio';
 
 interface Inquiry {
@@ -51,7 +50,7 @@ export default function AdminDashboard() {
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
     // Demo password is "admin123"
-    if (password === 'admin123') {
+    if (password === 'MyAdminPassword') {
       setIsAuthenticated(true);
       localStorage.setItem('admin-authenticated', 'true');
     } else {
@@ -400,7 +399,6 @@ export default function AdminDashboard() {
         </div>
       </main>
       
-      <ApiStatus />
     </div>
   );
 }

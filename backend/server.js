@@ -23,6 +23,8 @@ app.use(express.json());
 let inMemoryInquiries = [];
 let isMongoConnected = false;
 let notificationSubscribers = [];
+let portfolioProjects = [];
+
 
 // Connect to MongoDB
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/proco', {
@@ -38,6 +40,76 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/proco', {
     console.error('MongoDB connection error:', err);
     console.log('Running in demo mode with in-memory storage');
   });
+
+
+  app.get('/api/projects', (req, res) => {
+    res.status(200).json({
+      success: true,
+      data: portfolioProjects,
+    });
+  });
+
+// Add a new portfolio project
+app.post('/api/projects', (req, res) => {
+  const { title, description, details, image, technologies, published } = req.body;
+
+  // Validate required fields
+  if (!title || !description || !details || !image || !technologies) {
+    return res.status(400).json({ success: false, message: 'All fields are required' });
+  }
+
+  const newProject = {
+    id: Date.now().toString(),
+    title,
+    description,
+    details,
+    image,
+    technologies,
+    published: published || false,
+  };
+
+  portfolioProjects.push(newProject);
+
+  res.status(201).json({
+    success: true,
+    data: newProject,
+  });
+});
+
+// Delete a portfolio project
+app.delete('/api/projects/:id', (req, res) => {
+  const { id } = req.params;
+
+  const index = portfolioProjects.findIndex((project) => project.id === id);
+  if (index === -1) {
+    return res.status(404).json({ success: false, message: 'Project not found' });
+  }
+
+  portfolioProjects.splice(index, 1);
+
+  res.status(200).json({
+    success: true,
+    message: 'Project deleted successfully',
+  });
+});
+
+// Update project publish status
+app.patch('/api/projects/:id', (req, res) => {
+  const { id } = req.params;
+  const { published } = req.body;
+
+  const project = portfolioProjects.find((project) => project.id === id);
+  if (!project) {
+    return res.status(404).json({ success: false, message: 'Project not found' });
+  }
+
+  project.published = published;
+
+  res.status(200).json({
+    success: true,
+    data: project,
+  });
+});
 
 // Routes
 app.post('/api/inquiries', async (req, res) => {
